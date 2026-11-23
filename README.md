@@ -64,6 +64,21 @@ MeloHub is currently in its planning and development stage.
 
 Features, architecture, and implementation details are subject to change as the project evolves.
 
+## Development
+
+The catalog data model is implemented as framework-independent TypeScript with Zod schemas, taxonomy registries, and validation rules. It does not depend on Astro or any UI framework.
+
+Requirements: Node.js 24 or newer.
+
+```bash
+npm install
+npm run validate   # typecheck + tests
+npm run test       # Vitest only
+npm run typecheck  # TypeScript only
+```
+
+Data model decisions and their rationale are recorded in [`docs/decisions/ADR-001-data-model.md`](docs/decisions/ADR-001-data-model.md).
+
 ## License
 
 The project's licensing terms will be established before its initial public release.

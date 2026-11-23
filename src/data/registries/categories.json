@@ -1,0 +1,51 @@
+[
+  {
+    "id": "audio-playback",
+    "name": "Audio Playback",
+    "description": "Players, streamers and library playback tools.",
+    "navGroup": "audio",
+    "order": 10
+  },
+  {
+    "id": "audio-editing",
+    "name": "Audio Editing",
+    "description": "Waveform editors, recorders and multitrack tools.",
+    "navGroup": "audio",
+    "order": 20
+  },
+  {
+    "id": "audio-production",
+    "name": "Audio Production",
+    "description": "Instruments, effects and production software.",
+    "navGroup": "audio",
+    "order": 30
+  },
+  {
+    "id": "audio-utility",
+    "name": "Audio Utilities",
+    "description": "Tagging, conversion and library management tools.",
+    "navGroup": "audio",
+    "order": 40
+  },
+  {
+    "id": "general-utility",
+    "name": "General Utilities",
+    "description": "General-purpose tools that support audio work.",
+    "navGroup": "tools",
+    "order": 50
+  },
+  {
+    "id": "developer-tool",
+    "name": "Developer Tools",
+    "description": "Tools for building and testing audio software.",
+    "navGroup": "tools",
+    "order": 60
+  },
+  {
+    "id": "system-customization",
+    "name": "System Customization",
+    "description": "Themes, skins and system-level customisation.",
+    "navGroup": "customization",
+    "order": 70
+  }
+]

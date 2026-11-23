@@ -1,0 +1,52 @@
+[
+  {
+    "id": "offline",
+    "name": "Offline",
+    "description": "Works without a network connection."
+  },
+  {
+    "id": "gapless",
+    "name": "Gapless playback",
+    "description": "Plays consecutive tracks without an audible gap."
+  },
+  {
+    "id": "equalizer",
+    "name": "Equalizer",
+    "description": "Includes built-in tone or frequency adjustment."
+  },
+  {
+    "id": "multitrack",
+    "name": "Multitrack",
+    "description": "Works with more than one simultaneous audio track."
+  },
+  {
+    "id": "tag-editing",
+    "name": "Tag editing",
+    "description": "Reads and writes audio metadata."
+  },
+  {
+    "id": "batch-processing",
+    "name": "Batch processing",
+    "description": "Applies operations across many files at once."
+  },
+  {
+    "id": "wavetable-synthesis",
+    "name": "Wavetable synthesis",
+    "description": "Synthesises sound from wavetables."
+  },
+  {
+    "id": "mpe",
+    "name": "MPE",
+    "description": "Supports MIDI Polyphonic Expression."
+  },
+  {
+    "id": "android-auto",
+    "name": "Android Auto",
+    "description": "Integrates with Android Auto."
+  },
+  {
+    "id": "component-ecosystem",
+    "name": "Component ecosystem",
+    "description": "Extensible through vendor or third-party components."
+  }
+]

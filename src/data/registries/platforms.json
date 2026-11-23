@@ -1,0 +1,44 @@
+[
+  {
+    "id": "windows",
+    "name": "Windows",
+    "navGroup": "desktop",
+    "order": 10
+  },
+  {
+    "id": "macos",
+    "name": "macOS",
+    "navGroup": "desktop",
+    "order": 20
+  },
+  {
+    "id": "linux",
+    "name": "Linux",
+    "navGroup": "desktop",
+    "order": 30
+  },
+  {
+    "id": "android",
+    "name": "Android",
+    "navGroup": "mobile",
+    "order": 40
+  },
+  {
+    "id": "ios",
+    "name": "iOS",
+    "navGroup": "mobile",
+    "order": 50
+  },
+  {
+    "id": "tvos",
+    "name": "tvOS",
+    "navGroup": "tv",
+    "order": 60
+  },
+  {
+    "id": "web",
+    "name": "Web",
+    "navGroup": "web",
+    "order": 70
+  }
+]
