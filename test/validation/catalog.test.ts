@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type { CatalogRecord } from "../../src/data/schema/record";
+import type { CatalogRecord, RecordStatus } from "../../src/data/schema/record";
 import {
   toPublicCatalog,
   validateCatalog,
@@ -16,10 +16,16 @@ import {
 const TODAY = "2026-11-23";
 const options = { today: TODAY };
 
-function withIdentity(base: CatalogRecord, id: string, parent?: string): CatalogRecord {
+function withIdentity(
+  base: CatalogRecord,
+  id: string,
+  parent?: string,
+  status: RecordStatus = "published",
+): CatalogRecord {
   const copy = clone(base);
   copy.id = id;
   copy.title = id;
+  copy.status = status;
   copy.links = { ...copy.links, official: `https://example.com/${id}` };
   delete copy.searchTerms;
   if (parent) {
@@ -141,6 +147,44 @@ describe("catalog validation — variants", () => {
     const result = validateCatalog([root, child, grandchild], options);
     expect(result.ok).toBe(false);
     expect(result.issues.some((issue) => issue.message.includes("depth"))).toBe(true);
+  });
+
+  it("accepts a published variant with a published parent", () => {
+    const parent = withIdentity(audiomass, "parent");
+    const child = withIdentity(audiomass, "child", "parent");
+    const result = validateCatalog([parent, child], options);
+    expect(result.issues).toEqual([]);
+    expect(result.ok).toBe(true);
+  });
+
+  it("rejects a published variant whose parent is a draft", () => {
+    const parent = withIdentity(audiomass, "parent", undefined, "draft");
+    const child = withIdentity(audiomass, "child", "parent");
+    const result = validateCatalog([parent, child], options);
+    expect(result.ok).toBe(false);
+    expect(
+      result.issues.some((issue) => issue.message.includes("published variant requires a published parent")),
+    ).toBe(true);
+  });
+
+  it("rejects a published variant whose parent is archived", () => {
+    const parent = withIdentity(audiomass, "parent", undefined, "archived");
+    parent.archive = { at: TODAY, reason: "Retired" };
+    const child = withIdentity(audiomass, "child", "parent");
+    const result = validateCatalog([parent, child], options);
+    expect(result.ok).toBe(false);
+    expect(
+      result.issues.some((issue) => issue.message.includes("published variant requires a published parent")),
+    ).toBe(true);
+  });
+
+  it("accepts a draft variant with an archived parent", () => {
+    const parent = withIdentity(audiomass, "parent", undefined, "archived");
+    parent.archive = { at: TODAY, reason: "Retired" };
+    const child = withIdentity(audiomass, "child", "parent", "draft");
+    const result = validateCatalog([parent, child], options);
+    expect(result.issues).toEqual([]);
+    expect(result.ok).toBe(true);
   });
 
   it("rejects a duplicate official URL across unrelated products", () => {

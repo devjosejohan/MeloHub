@@ -72,12 +72,22 @@ Requirements: Node.js 24 or newer.
 
 ```bash
 npm install
-npm run validate   # typecheck + tests
-npm run test       # Vitest only
-npm run typecheck  # TypeScript only
+npm run validate          # typecheck + tests
+npm run test              # Vitest only
+npm run typecheck         # TypeScript only
+npm run catalog:editorial # validate every record, including drafts
+npm run catalog:public    # validate the public catalog (excludes drafts)
+npm run audit             # generate local audit report
 ```
 
-Data model decisions and their rationale are recorded in [`docs/decisions/ADR-001-data-model.md`](docs/decisions/ADR-001-data-model.md).
+### Continuous integration
+
+A GitHub Actions workflow runs `npm run audit` automatically on every push to `main` and on every pull request targeting `main`. The resulting reports are uploaded as downloadable artifacts for 7 days.
+
+- Data model decisions: [`docs/decisions/ADR-001-data-model.md`](docs/decisions/ADR-001-data-model.md).
+- Catalog pipeline decisions: [`docs/decisions/ADR-002-catalog-pipeline.md`](docs/decisions/ADR-002-catalog-pipeline.md).
+- Audit system decisions: [`docs/decisions/ADR-003-audit-system.md`](docs/decisions/ADR-003-audit-system.md).
+- How to add and edit records: [`data/records/README.md`](data/records/README.md).
 
 ## License
 

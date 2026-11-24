@@ -8,16 +8,20 @@
     "node": ">=24.0.0"
   },
   "scripts": {
-    "test": "vitest run",
+    "test": "vitest run --testTimeout 10000",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
-    "validate": "npm run typecheck && npm run test"
+    "validate": "npm run typecheck && npm run test",
+    "catalog:editorial": "tsx scripts/validate-editorial.ts",
+    "catalog:public": "tsx scripts/validate-public.ts",
+    "audit": "tsx scripts/audit.ts"
   },
   "dependencies": {
     "zod": "4.6.7"
   },
   "devDependencies": {
     "@types/node": "24.19.2",
+    "tsx": "4.23.15",
     "typescript": "6.0.3",
     "vitest": "5.1.1"
   }

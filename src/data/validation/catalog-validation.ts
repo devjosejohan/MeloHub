@@ -117,6 +117,12 @@ export function validateCatalog(
         message: "variant depth is limited to one level",
       });
     }
+    if (record.status === "published" && parent.status !== "published") {
+      issues.push({
+        path: `${record.id}.variantOf`,
+        message: "published variant requires a published parent record",
+      });
+    }
   }
 
   for (const record of records) {
